@@ -10,6 +10,13 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+asyncpg://postgres:postgres@localhost:5432/chatbot_db")
 
+# Render/Supabase thường yêu cầu SSL. Đảm bảo URL có tham số này.
+if "localhost" not in DATABASE_URL and "ssl=" not in DATABASE_URL:
+    if "?" in DATABASE_URL:
+        DATABASE_URL += "&ssl=require"
+    else:
+        DATABASE_URL += "?ssl=require"
+
 # Async engine
 engine = create_async_engine(DATABASE_URL, echo=False, pool_size=5, max_overflow=10)
 
