@@ -3,7 +3,7 @@ import axios from 'axios';
 import Sidebar from './components/Sidebar';
 import ChatArea from './components/ChatArea';
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'https://chatbot-backend-api-vgwl.onrender.com';
 
 function App() {
   const [sessions, setSessions] = useState([]);
